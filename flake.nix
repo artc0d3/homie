@@ -19,6 +19,7 @@
           ./home-manager.nix
           ./services/ddns.nix
           ./services/nginx.nix
+          ./services/podman.nix
           ./services/sshd.nix
           ./system.nix
           home-manager.nixosModules.home-manager
