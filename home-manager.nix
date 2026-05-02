@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   homie-config = {
     home.stateVersion = "25.11";
@@ -9,6 +9,11 @@ let
     programs.neovim = {
       enable = true;
       defaultEditor = true;
+    };
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = builtins.fromTOML (builtins.readFile ./configs/starship/settings.toml);
     };
     programs.zsh = {
       enable = true;
