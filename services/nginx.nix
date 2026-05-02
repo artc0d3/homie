@@ -7,7 +7,7 @@
 {
   services.nginx = {
     enable = true;
-    virtualHosts.localhost = {
+    virtualHosts."miauz.eu" = {
       locations."/" = {
         return = "200 '<html><body>It works</body></html>'";
         extraConfig = ''
