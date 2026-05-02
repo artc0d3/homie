@@ -19,7 +19,7 @@ let
   };
   # Network configuration
   networking = {
-    networking.hostName = "nas";
+    networking.hostName = "homie";
     # Configure network connections interactively with nmcli or nmtui.
     networking.networkmanager.enable = true;
   };
@@ -33,7 +33,7 @@ let
   };
   # Users and groups
   users = {
-    users.users.nas = {
+    users.users.homie = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
     };
