@@ -33,9 +33,12 @@ let
   };
   # Users and groups
   users = {
+    programs.zsh.enable = true;
     users.users.homie = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
+      hashedPasswordFile = "/var/lib/secrets/sys.user.homie";
+      shell = pkgs.zsh;
     };
   };
 in
