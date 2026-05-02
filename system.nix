@@ -19,7 +19,7 @@ let
   };
   # Network configuration
   networking = {
-    networking.hostName = "nas";
+    networking.hostName = "homie";
     # Configure network connections interactively with nmcli or nmtui.
     networking.networkmanager.enable = true;
   };
@@ -33,9 +33,12 @@ let
   };
   # Users and groups
   users = {
-    users.users.nas = {
+    programs.zsh.enable = true;
+    users.users.homie = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
+      hashedPasswordFile = "/var/lib/secrets/sys.user.homie";
+      shell = pkgs.zsh;
     };
   };
 in

@@ -16,8 +16,9 @@
         system = "x86_64-linux";
         modules = [
           ./hardware.nix
-          ./system.nix
+          ./home-manager.nix
           ./services/sshd.nix
+          ./system.nix
           home-manager.nixosModules.home-manager
         ];
       };
