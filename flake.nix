@@ -17,7 +17,9 @@
         modules = [
           ./hardware.nix
           ./home-manager.nix
+          ./services/samba.nix
           ./services/sshd.nix
+          ./storage.nix
           ./system.nix
           home-manager.nixosModules.home-manager
         ];
