@@ -18,6 +18,7 @@
           ./hardware.nix
           ./home-manager.nix
           ./services/sshd.nix
+          ./storage.nix
           ./system.nix
           home-manager.nixosModules.home-manager
         ];
