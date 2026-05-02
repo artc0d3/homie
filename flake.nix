@@ -17,6 +17,7 @@
         modules = [
           ./hardware.nix
           ./home-manager.nix
+          ./services/nginx.nix
           ./services/sshd.nix
           ./services/tailscale.nix
           ./system.nix
