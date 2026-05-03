@@ -17,6 +17,7 @@
         modules = [
           ./hardware.nix
           ./home-manager.nix
+          ./services/avahi.nix
           ./services/samba.nix
           ./services/sshd.nix
           ./storage.nix
