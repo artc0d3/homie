@@ -9,19 +9,23 @@
 {
   environment.systemPackages = with pkgs; [ btrfs-progs ];
 
+  # Scan for multi-device BTRFS volumes before mounting
+  boot.initrd.supportedFilesystems = [ "btrfs" ];
+
   fileSystems."/data" = {
     device = "/dev/disk/by-label/homie";
     fsType = "btrfs";
     options = [
       "compress=zstd"
       "noatime"
+      "nofail"
     ];
   };
 
   # Set group ownership and permissions on /data
   systemd.tmpfiles.rules = [
-    "d /data 0775 homie homie -"
-    "A /data - - - - default:group:homie:rwx"
+    "d /data 0775 homie users -"
+    "A /data - - - - default:group:users:rwx"
   ];
 
   services.btrfs.autoScrub = {
