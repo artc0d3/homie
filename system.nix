@@ -22,6 +22,16 @@ let
     networking.hostName = "homie";
     # Configure network connections interactively with nmcli or nmtui.
     networking.networkmanager.enable = true;
+
+    # Firewall settings
+    networking.nftables.enable = true;
+    networking.firewall = {
+      enable = true;
+
+      # Drop all incoming ICMP except rate-limited ping (handled below).
+      allowPing = true;
+      pingLimit = "1/second burst 4 packets";
+    };
   };
   # NixOS settings
   nixos = {
