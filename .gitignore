@@ -1,12 +1,12 @@
 # Editors
-.idea/
+.idea
 *.iml
-.vscode/
+.vscode
 *.swp
 *~
 
 # NixOS builds
-result/
+result
 
 # Claude Code
 settings.local.json
