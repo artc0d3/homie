@@ -1,5 +1,5 @@
 # Cockpit is a web-based server management tool that allows you to manage your server through a web interface.
-{ ... }:
+{ pkgs, ... }:
 {
   services.cockpit = {
     enable = true;
@@ -12,4 +12,7 @@
       };
     };
   };
+
+  # Required for Cockpit's storage management plugin.
+  services.udisks2.enable = true;
 }
