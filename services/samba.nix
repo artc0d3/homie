@@ -1,10 +1,10 @@
 # Samba file sharing for /data
 #
-# Place the Samba password for the homie user in:
-#   /var/lib/secrets/samba.homie (plaintext, mode 0400, owned by root)
+# The Samba password for the homie user is managed by sops-nix.
+# See README.md for provisioning instructions.
 { config, pkgs, ... }:
 let
-  passwordFile = "/var/lib/secrets/samba.homie.passwd";
+  passwordFile = config.sops.secrets."samba.homie.passwd".path;
 in
 {
   # Set the Samba password from a file after activation
