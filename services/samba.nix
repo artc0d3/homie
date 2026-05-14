@@ -7,13 +7,17 @@ let
   passwordFile = config.sops.secrets."samba.homie.passwd".path;
 in
 {
-  # Set the Samba password from a file after activation
-  system.activationScripts.postActivation.text = ''
-    if [ -f "${passwordFile}" ]; then
-      PASSWORD=$(<"${passwordFile}")
-      printf '%s\n%s\n' "$PASSWORD" "$PASSWORD" | ${pkgs.samba}/bin/smbpasswd -s -a homie
-    fi
-  '';
+  # Set the Samba password from a file after activation.
+  # Depends on setupSecrets so sops-nix has decrypted the password first.
+  system.activationScripts.postActivation = {
+    deps = [ "setupSecrets" ];
+    text = ''
+      if [ -f "${passwordFile}" ]; then
+        PASSWORD=$(<"${passwordFile}")
+        printf '%s\n%s\n' "$PASSWORD" "$PASSWORD" | ${pkgs.samba}/bin/smbpasswd -s -a homie
+      fi
+    '';
+  };
 
   services.samba = {
     enable = true;
