@@ -30,10 +30,9 @@
 
   # Set group ownership and permissions on /data (setgid ensures new files inherit the storage group)
   systemd.tmpfiles.rules = [
-    "d /data 2760 homie storage -"
-    "Z /data 2760 homie storage -"
-    "d /data/music 2760 homie storage -"
-    "d /data/video 2760 homie storage -"
+    "d /data 2770 homie storage -"
+    "d /data/music - homie storage -"
+    "d /data/video - homie storage -"
   ];
 
   services.btrfs.autoScrub = {
