@@ -5,6 +5,7 @@
     enable = true;
     port = 9090;
     openFirewall = true;
+    allowed-origins = [ "http://homie.local:9090" ];
     settings = {
       WebService = {
         AllowUnencrypted = true;
