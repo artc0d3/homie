@@ -10,6 +10,10 @@
   sops = {
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
+    # Secrets live outside the Nix store (in /var/lib/secrets/), so skip
+    # build-time path validation. They are provisioned out-of-band.
+    validateSopsFiles = false;
+
     secrets."sys.user.homie" = {
       sopsFile = "/var/lib/secrets/sys.user.homie";
       format = "binary";
