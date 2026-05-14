@@ -28,6 +28,7 @@
           ./home-manager.nix
           ./secrets.nix
           ./services/avahi.nix
+          ./services/cockpit.nix
           ./services/jellyfin.nix
           ./services/samba.nix
           ./services/sshd.nix
