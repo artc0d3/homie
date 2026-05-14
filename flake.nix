@@ -14,7 +14,12 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, sops-nix, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      sops-nix,
+      ...
+    }:
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
