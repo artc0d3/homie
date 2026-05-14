@@ -47,7 +47,7 @@ let
     users.users.homie = {
       isNormalUser = true;
       extraGroups = [ "wheel" ];
-      hashedPasswordFile = "/var/lib/secrets/sys.user.homie";
+      hashedPasswordFile = config.sops.secrets."sys.user.homie".path;
       shell = pkgs.zsh;
     };
   };
