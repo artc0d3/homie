@@ -39,14 +39,15 @@ EOF
 ```bash
 # Password for the shell user 'homie' 
 sudo nix-shell -p sops --run '
-  mkpasswd -m sha-512 | sops --input-type binary --output-type binary \
+  mkpasswd -m sha-512 | sops --config /var/lib/secrets/.sops.yaml \
+  --input-type binary --output-type binary \
   -e /dev/stdin > /var/lib/secrets/system.user.homie 
 '
 
 # Password for the Samba user 'homie'. 
 sudo nix-shell -p sops --run '
   read -s -p "Samba password: " pw && echo "$pw" | \
-  sops --input-type binary --output-type binary \
+  sops --config /var/lib/secrets/.sops.yaml --input-type binary --output-type binary \
   -e /dev/stdin > /var/lib/secrets/samba.homie.passwd
 '
 ```
