@@ -14,8 +14,8 @@
     # build-time path validation. They are provisioned out-of-band.
     validateSopsFiles = false;
 
-    secrets."sys.user.homie" = {
-      sopsFile = "/var/lib/secrets/sys.user.homie";
+    secrets."system.user.homie" = {
+      sopsFile = "/var/lib/secrets/system.user.homie";
       format = "binary";
       neededForUsers = true;
     };

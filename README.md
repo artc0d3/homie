@@ -40,7 +40,7 @@ EOF
 # Password for the shell user 'homie' 
 sudo nix-shell -p sops --run '
   mkpasswd -m sha-512 | sops --input-type binary --output-type binary \
-  -e /dev/stdin > /var/lib/secrets/sys.user.homie 
+  -e /dev/stdin > /var/lib/secrets/system.user.homie 
 '
 
 # Password for the Samba user 'homie'. 
