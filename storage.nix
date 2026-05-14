@@ -7,7 +7,13 @@
 # Find them with: lsblk
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ btrfs-progs ];
+  users.groups.storage = { };
+  users.users.homie.extraGroups = [ "storage" ];
+
+  environment.systemPackages = with pkgs; [
+    acl
+    btrfs-progs
+  ];
 
   # Scan for multi-device BTRFS volumes before mounting
   boot.initrd.supportedFilesystems = [ "btrfs" ];
@@ -22,10 +28,11 @@
     ];
   };
 
-  # Set group ownership and permissions on /data
+  # Set group ownership and permissions on /data (setgid ensures new files inherit the storage group)
   systemd.tmpfiles.rules = [
-    "d /data 0775 homie users -"
-    "A /data - - - - default:group:users:rwx"
+    "d /data 2770 homie storage -"
+    "d /data/music - homie storage -"
+    "d /data/video - homie storage -"
   ];
 
   services.btrfs.autoScrub = {
